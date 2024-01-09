@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -16,7 +20,7 @@
         <div class="card text-bg-info mb-3">
           <div class="card-header bg-light text-center">Calculator</div>
           <div class="card-body">
-            <form action="" method="POST">
+            <form action="calculator.php" method="POST">
               <div class="mb-3">
                 <label class="form-label">Number One</label>
                 <input type="text" class="form-control" name="number_one">
@@ -31,61 +35,18 @@
               <button type="submit" class="btn btn-primary" name="mul">Mul</button>
               <button type="submit" class="btn btn-primary" name="div">Div</button>
             </form>
-
-            <!-- PHP Start Here -->
-            <?php
-
-            if(isset($_POST['number_one']))
-            {
-              if ($_POST['number_one']) {
-                if ($_POST['number_two']) {
-                  ?>
-                  <div class="bg-warning mt-3 pt-2 pb-2 text-center">
-                    Result: <?php
-                    if(isset($_POST ['add']))
-                    {
-                      echo $_POST['number_one'] + $_POST['number_two'];
-                    }
-                    if(isset($_POST ['sub']))
-                    {
-                      echo $_POST['number_one'] - $_POST['number_two'];
-                    }
-                    if(isset($_POST ['mul']))
-                    {
-                      echo $_POST['number_one'] * $_POST['number_two'];
-                    }
-                    if(isset($_POST ['div']))
-                    {
-                      echo $_POST['number_one'] / $_POST['number_two'];
-                    }
-                    ?>
-                  </div>
-                  
-                  <?php
-                } else {
-                  ?>
-                  <div class="bg-danger mt-3 pt-2 pb-2 text-center">
-                     <?php
-                    echo "Number two is missing.";
-                    ?>
-                  </div>
-                  <?php
-                }
-              } else {
-                ?>
-                  <div class="bg-danger mt-3 pt-2 pb-2 text-center">
-                     <?php
-                    echo "Number one is missing.";
-                    ?>
-                  </div>
-                  <?php
-              }
-            }
-
-            ?>
-            <!-- PHP End Here -->
-
             
+            <?php
+              if(isset($_SESSION ['result']))
+              {
+                ?>
+               <div class="alert alert-info mt-3 text-center">
+                 Result: <?php 
+                  echo $_SESSION ['result'];
+                  unset ($_SESSION ['result']);
+              }
+              ?>
+              </div>
 
           </div>
         </div>

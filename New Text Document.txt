@@ -1,0 +1,52 @@
+<!-- PHP Start Here -->
+            <?php
+
+            if(isset($_POST['number_one']))
+            {
+              if ($_POST['number_one']) {
+                if ($_POST['number_two']) {
+                  ?>
+                  <div class="bg-warning mt-3 pt-2 pb-2 text-center">
+                    Result: <?php
+                    if(isset($_POST ['add']))
+                    {
+                      echo $_POST['number_one'] + $_POST['number_two'];
+                    }
+                    if(isset($_POST ['sub']))
+                    {
+                      echo $_POST['number_one'] - $_POST['number_two'];
+                    }
+                    if(isset($_POST ['mul']))
+                    {
+                      echo $_POST['number_one'] * $_POST['number_two'];
+                    }
+                    if(isset($_POST ['div']))
+                    {
+                      echo $_POST['number_one'] / $_POST['number_two'];
+                    }
+                    ?>
+                  </div>
+                  
+                  <?php
+                } else {
+                  ?>
+                  <div class="bg-danger mt-3 pt-2 pb-2 text-center">
+                     <?php
+                    echo "Number two is missing.";
+                    ?>
+                  </div>
+                  <?php
+                }
+              } else {
+                ?>
+                  <div class="bg-danger mt-3 pt-2 pb-2 text-center">
+                     <?php
+                    echo "Number one is missing.";
+                    ?>
+                  </div>
+                  <?php
+              }
+            }
+
+            ?>
+            <!-- PHP End Here -->
